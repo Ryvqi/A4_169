@@ -2,10 +2,6 @@ package com.example.bisnisproperti.dependesiinjeksi
 
 import com.example.bisnisproperti.repository.JenisPropertiRepository
 import com.example.bisnisproperti.repository.ManajerPropertiRepository
-import com.example.bisnisproperti.repository.NetworkJenisPropertiRepository
-import com.example.bisnisproperti.repository.NetworkManajerPropertiRepository
-import com.example.bisnisproperti.repository.NetworkPemilikRepository
-import com.example.bisnisproperti.repository.NetworkPropertiRepository
 import com.example.bisnisproperti.repository.PemilikRepository
 import com.example.bisnisproperti.repository.PropertiRepository
 import com.example.bisnisproperti.service.JenisPropertiService
@@ -32,6 +28,23 @@ class PropertiContainer : AppContainer {
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl)
         .build()
+
+    // Service instances
+    private val propertiService: PropertiService by lazy {
+        retrofit.create(PropertiService::class.java)
+    }
+
+    private val jenisPropertiService: JenisPropertiService by lazy {
+        retrofit.create(JenisPropertiService::class.java)
+    }
+
+    private val pemilikService: PemilikService by lazy {
+        retrofit.create(PemilikService::class.java)
+    }
+
+    private val manajerPropertiService: ManajerPropertiService by lazy {
+        retrofit.create(ManajerPropertiService::class.java)
+    }
 
 
 }
