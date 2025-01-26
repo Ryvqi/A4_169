@@ -2,6 +2,10 @@ package com.example.bisnisproperti.dependesiinjeksi
 
 import com.example.bisnisproperti.repository.JenisPropertiRepository
 import com.example.bisnisproperti.repository.ManajerPropertiRepository
+import com.example.bisnisproperti.repository.NetworkJenisPropertiRepository
+import com.example.bisnisproperti.repository.NetworkManajerPropertiRepository
+import com.example.bisnisproperti.repository.NetworkPemilikRepository
+import com.example.bisnisproperti.repository.NetworkPropertiRepository
 import com.example.bisnisproperti.repository.PemilikRepository
 import com.example.bisnisproperti.repository.PropertiRepository
 import com.example.bisnisproperti.service.JenisPropertiService
@@ -46,5 +50,20 @@ class PropertiContainer : AppContainer {
         retrofit.create(ManajerPropertiService::class.java)
     }
 
+    // Repository instances
+    override val propertiRepository: PropertiRepository by lazy {
+        NetworkPropertiRepository(propertiService)
+    }
 
+    override val jenisPropertiRepository: JenisPropertiRepository by lazy {
+        NetworkJenisPropertiRepository(jenisPropertiService)
+    }
+
+    override val pemilikRepository: PemilikRepository by lazy {
+        NetworkPemilikRepository(pemilikService)
+    }
+
+    override val manajerPropertiRepository: ManajerPropertiRepository by lazy {
+        NetworkManajerPropertiRepository(manajerPropertiService)
+    }
 }
