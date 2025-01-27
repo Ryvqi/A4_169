@@ -15,15 +15,18 @@ interface PropertiService {
     @GET("properti")
     suspend fun getAllProperti(): AllPropertiResponse
 
-    @GET("properti/{id}")
-    suspend fun getPropertiById(@Path("id") id: String): Properti
+    @GET("properti/{id_properti}")
+    suspend fun getPropertiById(@Path("id_properti") idProperti: String): Properti
 
-    @POST("properti")
-    suspend fun insertProperti(@Body properti: Properti)
+    @POST("properti/store")
+    suspend fun insertProperti(@Body properti: Properti): Response<Properti>
 
-    @PUT("properti/{id}")
-    suspend fun updateProperti(@Path("id") id: String, @Body properti: Properti)
+    @PUT("properti/{id_properti}")
+    suspend fun updateProperti(
+        @Path("id_properti") idProperti: String,
+        @Body properti: Properti
+    ): Response<Properti>
 
-    @DELETE("properti/{id}")
-    suspend fun deleteProperti(@Path("id") id: String): Response<Void>
+    @DELETE("properti/{id_properti}")
+    suspend fun deleteProperti(@Path("id_properti") idProperti: String): Response<Void>
 }
