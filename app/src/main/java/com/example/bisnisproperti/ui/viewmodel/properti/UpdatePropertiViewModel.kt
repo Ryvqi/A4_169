@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.example.bisnisproperti.model.Properti
 import com.example.bisnisproperti.repository.PropertiRepository
 
 class UpdatePropertiViewModel(
@@ -16,3 +17,7 @@ class UpdatePropertiViewModel(
 
     private val idProperti: Int = checkNotNull(savedStateHandle["id_properti"])
 }
+
+fun Properti.toInsertpropertiUiEvent(): InsertPropertiUiState = InsertPropertiUiState(
+    insertPropertiUiEvent = this.toDetailPropertiUiEvent()
+)
