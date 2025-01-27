@@ -15,15 +15,18 @@ interface ManajerPropertiService {
     @GET("manajer_properti")
     suspend fun getAllManajerProperti(): AllManajerPropertiResponse
 
-    @GET("manajer_properti/{id}")
-    suspend fun getManajerPropertiById(@Path("id") id: String): ManajerProperti
+    @GET("manajer_properti/{id_manajer}")
+    suspend fun getManajerPropertiById(@Path("id_manajer") idManajer: String): ManajerProperti
 
-    @POST("manajer_properti")
-    suspend fun insertManajerProperti(@Body manajerProperti: ManajerProperti)
+    @POST("manajer_properti/store")
+    suspend fun insertManajerProperti(@Body manajerProperti: ManajerProperti): Response<ManajerProperti>
 
-    @PUT("manajer_properti/{id}")
-    suspend fun updateManajerProperti(@Path("id") id: String, @Body manajerProperti: ManajerProperti)
+    @PUT("manajer_properti/{id_manajer}")
+    suspend fun updateManajerProperti(
+        @Path("id_manajer") idManajer: String,
+        @Body manajerProperti: ManajerProperti
+    ): Response<ManajerProperti>
 
-    @DELETE("manajer_properti/{id}")
-    suspend fun deleteManajerProperti(@Path("id") id: String): Response<Void>
+    @DELETE("manajer_properti/{id_manajer}")
+    suspend fun deleteManajerProperti(@Path("id_manajer") idManajer: String): Response<Void>
 }
