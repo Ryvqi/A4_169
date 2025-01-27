@@ -4,8 +4,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.Properti
 import com.example.bisnisproperti.repository.PropertiRepository
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
 sealed class HomePropertiUiState {
     data class Success(
@@ -19,4 +23,21 @@ sealed class HomePropertiUiState {
 class HomePropertiViewModel(private val propertiRepository: PropertiRepository) : ViewModel() {
     var propertiUiState: HomePropertiUiState by mutableStateOf(HomePropertiUiState.Loading)
         private set
+
+    init {
+        getAllProperti()
+    }
+
+    fun getAllProperti() {
+        viewModelScope.launch {
+            propertiUiState = HomePropertiUiState.Loading
+            propertiUiState = try {
+                HomePropertiUiState.Success(propertiRepository.getAllProperti().data)
+            } catch (e: IOException) {
+                HomePropertiUiState.Error
+            } catch (e: HttpException) {
+                HomePropertiUiState.Error
+            }
+        }
+    }
 }
