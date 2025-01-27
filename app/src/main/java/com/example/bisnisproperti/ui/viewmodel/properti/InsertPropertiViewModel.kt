@@ -10,6 +10,8 @@ import com.example.bisnisproperti.repository.PropertiRepository
 class InsertPropertiViewModel(private val propertiRepository: PropertiRepository) : ViewModel() {
     var uiState by mutableStateOf(InsertPropertiUiState())
         private set
+
+
 }
 
 data class InsertPropertiUiEvent(
