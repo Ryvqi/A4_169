@@ -47,3 +47,17 @@ class DetailPropertiViewModel(
         }
     }
 }
+
+fun Properti.toDetailPropertiUiEvent(): InsertPropertiUiEvent{
+    return InsertPropertiUiEvent(
+        idProperti = idProperti,
+        namaProperti = namaProperti,
+        deskripsiProperti = deskripsiProperti,
+        lokasi = lokasi,
+        harga = harga,
+        statusProperti = statusProperti,
+        idJenis = idJenis,
+        idPemilik = idPemilik,
+        idManajer = idManajer
+    )
+}
