@@ -1,5 +1,7 @@
 package com.example.bisnisproperti.ui.viewmodel.properti
 
+import com.example.bisnisproperti.model.Properti
+
 data class InsertPropertiUiEvent(
     val idProperti: Int = 0,
     val namaProperti: String = "",
@@ -10,4 +12,16 @@ data class InsertPropertiUiEvent(
     val idJenis: Int = 0,
     val idPemilik: Int = 0,
     val idManajer: Int = 0
+)
+
+fun InsertPropertiUiEvent.toProperti(): Properti = Properti(
+    idProperti = idProperti,
+    namaProperti = namaProperti,
+    deskripsiProperti = deskripsiProperti,
+    lokasi = lokasi,
+    harga = harga,
+    statusProperti = statusProperti,
+    idJenis = idJenis,
+    idPemilik = idPemilik,
+    idManajer = idManajer
 )
