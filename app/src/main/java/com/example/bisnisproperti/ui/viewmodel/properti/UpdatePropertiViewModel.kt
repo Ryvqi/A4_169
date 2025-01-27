@@ -36,6 +36,10 @@ class UpdatePropertiViewModel(
             }
         }
     }
+
+    fun updateState(insertPropertiUiEvent: InsertPropertiUiEvent) {
+        uiState = uiState.copy(insertPropertiUiEvent = insertPropertiUiEvent)
+    }
 }
 
 fun Properti.toInsertpropertiUiEvent(): InsertPropertiUiState = InsertPropertiUiState(
