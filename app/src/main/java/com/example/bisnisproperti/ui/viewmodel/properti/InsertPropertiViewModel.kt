@@ -1,6 +1,16 @@
 package com.example.bisnisproperti.ui.viewmodel.properti
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 import com.example.bisnisproperti.model.Properti
+import com.example.bisnisproperti.repository.PropertiRepository
+
+class InsertPropertiViewModel(private val propertiRepository: PropertiRepository) : ViewModel() {
+    var uiState by mutableStateOf(InsertPropertiUiState())
+        private set
+}
 
 data class InsertPropertiUiEvent(
     val idProperti: Int = 0,
