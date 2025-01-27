@@ -3,12 +3,13 @@ package com.example.bisnisproperti.repository
 import com.example.bisnisproperti.model.AllPropertiResponse
 import com.example.bisnisproperti.model.Properti
 import com.example.bisnisproperti.service.PropertiService
+import retrofit2.Response
 
 interface PropertiRepository {
     suspend fun getAllProperti(): AllPropertiResponse
     suspend fun getPropertiById(id: String): Properti
-    suspend fun insertProperti(properti: Properti)
-    suspend fun updateProperti(id: String, properti: Properti)
+    suspend fun insertProperti(properti: Properti): Response<Properti> // Disesuaikan dengan return type
+    suspend fun updateProperti(id: String, properti: Properti): Response<Properti> // Disesuaikan dengan return type
     suspend fun deleteProperti(id: String): String
 }
 

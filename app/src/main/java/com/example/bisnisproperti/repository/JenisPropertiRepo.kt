@@ -3,12 +3,13 @@ package com.example.bisnisproperti.repository
 import com.example.bisnisproperti.model.AllJenisPropertiResponse
 import com.example.bisnisproperti.model.JenisProperti
 import com.example.bisnisproperti.service.JenisPropertiService
+import retrofit2.Response
 
 interface JenisPropertiRepository {
     suspend fun getAllJenisProperti(): AllJenisPropertiResponse
     suspend fun getJenisPropertiById(id: String): JenisProperti
-    suspend fun insertJenisProperti(jenisProperti: JenisProperti)
-    suspend fun updateJenisProperti(id: String, jenisProperti: JenisProperti)
+    suspend fun insertJenisProperti(jenisProperti: JenisProperti): Response<JenisProperti>
+    suspend fun updateJenisProperti(id: String, jenisProperti: JenisProperti): Response<JenisProperti>
     suspend fun deleteJenisProperti(id: String): String
 }
 

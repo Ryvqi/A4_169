@@ -3,12 +3,13 @@ package com.example.bisnisproperti.repository
 import com.example.bisnisproperti.model.AllManajerPropertiResponse
 import com.example.bisnisproperti.model.ManajerProperti
 import com.example.bisnisproperti.service.ManajerPropertiService
+import retrofit2.Response
 
 interface ManajerPropertiRepository {
     suspend fun getAllManajerProperti(): AllManajerPropertiResponse
     suspend fun getManajerPropertiById(id: String): ManajerProperti
-    suspend fun insertManajerProperti(manajerProperti: ManajerProperti)
-    suspend fun updateManajerProperti(id: String, manajerProperti: ManajerProperti)
+    suspend fun insertManajerProperti(manajerProperti: ManajerProperti): Response<ManajerProperti>
+    suspend fun updateManajerProperti(id: String, manajerProperti: ManajerProperti): Response<ManajerProperti>
     suspend fun deleteManajerProperti(id: String): String
 }
 
