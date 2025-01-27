@@ -41,3 +41,7 @@ fun Properti.toInsertPropertiUiEvent(): InsertPropertiUiEvent = InsertPropertiUi
     idPemilik = idPemilik,
     idManajer = idManajer
 )
+
+fun Properti.toUiStateProperti(): InsertPropertiUiState = InsertPropertiUiState(
+    insertPropertiUiEvent = toInsertPropertiUiEvent()
+)
