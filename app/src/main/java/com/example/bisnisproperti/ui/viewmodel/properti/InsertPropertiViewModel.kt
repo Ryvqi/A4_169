@@ -25,3 +25,7 @@ fun InsertPropertiUiEvent.toProperti(): Properti = Properti(
     idPemilik = idPemilik,
     idManajer = idManajer
 )
+
+data class InsertPropertiUiState(
+    val insertPropertiUiEvent: InsertPropertiUiEvent = InsertPropertiUiEvent()
+)
