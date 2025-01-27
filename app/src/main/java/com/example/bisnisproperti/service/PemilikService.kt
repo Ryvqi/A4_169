@@ -15,15 +15,18 @@ interface PemilikService {
     @GET("pemilik")
     suspend fun getAllPemilik(): AllPemilikResponse
 
-    @GET("pemilik/{id}")
-    suspend fun getPemilikById(@Path("id") id: String): Pemilik
+    @GET("pemilik/{id_pemilik}")
+    suspend fun getPemilikById(@Path("id_pemilik") idPemilik: String): Pemilik
 
-    @POST("pemilik")
-    suspend fun insertPemilik(@Body pemilik: Pemilik)
+    @POST("pemilik/store")
+    suspend fun insertPemilik(@Body pemilik: Pemilik): Response<Pemilik>
 
-    @PUT("pemilik/{id}")
-    suspend fun updatePemilik(@Path("id") id: String, @Body pemilik: Pemilik)
+    @PUT("pemilik/{id_pemilik}")
+    suspend fun updatePemilik(
+        @Path("id_pemilik") idPemilik: String,
+        @Body pemilik: Pemilik
+    ): Response<Pemilik>
 
-    @DELETE("pemilik/{id}")
-    suspend fun deletePemilik(@Path("id") id: String): Response<Void>
+    @DELETE("pemilik/{id_pemilik}")
+    suspend fun deletePemilik(@Path("id_pemilik") idPemilik: String): Response<Void>
 }
