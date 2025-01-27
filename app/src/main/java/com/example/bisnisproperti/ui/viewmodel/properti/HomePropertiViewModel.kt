@@ -40,4 +40,17 @@ class HomePropertiViewModel(private val propertiRepository: PropertiRepository) 
             }
         }
     }
+
+    fun deleteProperti(idProperti: Int) {
+        viewModelScope.launch {
+            try {
+                propertiRepository.deleteProperti(idProperti.toString())
+                getAllProperti() // Refresh list after deletion
+            } catch (e: IOException) {
+                propertiUiState = HomePropertiUiState.Error
+            } catch (e: HttpException) {
+                propertiUiState = HomePropertiUiState.Error
+            }
+        }
+    }
 }
