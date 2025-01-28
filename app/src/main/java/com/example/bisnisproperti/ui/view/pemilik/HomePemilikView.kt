@@ -29,7 +29,7 @@ object DestinasiHomePemilik: DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePemilikView(
-    navigateToItemEntry: () -> Unit,
+    navigateToInsertPemilik: () -> Unit,
     onDetailClick: (Int) -> Unit = {},
     onEditClick: (Int) -> Unit = {},
     viewModel: HomePemilikViewModel = viewModel(factory = PenyediaVMPemilik.Factory)
@@ -46,7 +46,7 @@ fun HomePemilikView(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = navigateToItemEntry) {
+            FloatingActionButton(onClick = navigateToInsertPemilik) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Pemilik")
             }
         }

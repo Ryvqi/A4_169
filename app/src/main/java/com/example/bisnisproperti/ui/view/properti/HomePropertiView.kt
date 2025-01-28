@@ -29,8 +29,8 @@ object DestinasiHomeProperti: DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePropertiView(
-    navigateToItemEntry: () -> Unit,
-    onDetailClick: (Int) -> Unit = {},
+    navigateToInsertProperti: () -> Unit,
+    onDetailClick: (Int) -> Unit,
     onEditClick: (Int) -> Unit = {},
     viewModel: HomePropertiViewModel = viewModel(factory = PenyediaVMProperti.Factory)
 ) {
@@ -46,7 +46,7 @@ fun HomePropertiView(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = navigateToItemEntry) {
+            FloatingActionButton(onClick = navigateToInsertProperti) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Properti")
             }
         }
