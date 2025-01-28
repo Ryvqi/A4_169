@@ -12,10 +12,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerUiEvent
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerUiState
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerViewModel
 import kotlinx.coroutines.launch
+
+object DestinasiInsertManajer: DestinasiNavigasi {
+    override val route = "insert manajer"
+    override val titleRes = "Insert Manajer"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
