@@ -23,6 +23,7 @@ import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.properti.InsertPropertiUiEvent
 import com.example.bisnisproperti.ui.viewmodel.properti.InsertPropertiUiState
 import com.example.bisnisproperti.ui.viewmodel.properti.InsertPropertiViewModel
+import com.example.bisnisproperti.ui.viewmodel.properti.PenyediaVMProperti
 import kotlinx.coroutines.launch
 
 object DestinasiInsertProperti: DestinasiNavigasi {
@@ -35,7 +36,7 @@ object DestinasiInsertProperti: DestinasiNavigasi {
 fun InsertPropertiView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: InsertPropertiViewModel = viewModel()
+    viewModel: InsertPropertiViewModel = viewModel(factory = PenyediaVMProperti.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
