@@ -13,6 +13,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.bisnisproperti.model.Properti
+import com.example.bisnisproperti.ui.viewmodel.properti.HomePropertiUiState
+
+@Composable
+fun PropertiStatus(
+    homePropertiUiState: HomePropertiUiState,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier,
+    onDetailClick: (Int) -> Unit,
+    onEditClick: (Int) -> Unit,
+    onDeleteClick: (Properti) -> Unit
+) {
+    when (homePropertiUiState) {
+        is HomePropertiUiState.Loading -> LoadingScreen(modifier)
+        is HomePropertiUiState.Success ->
+            if (homePropertiUiState.properti.isEmpty()) {
+                EmptyScreen(modifier)
+            } else {
+                PropertiList(
+                    propertiList = homePropertiUiState.properti,
+                    modifier = modifier,
+                    onDetailClick = onDetailClick,
+                    onEditClick = onEditClick,
+                    onDeleteClick = onDeleteClick
+                )
+            }
+        is HomePropertiUiState.Error -> ErrorScreen(retryAction, modifier)
+    }
+}
 
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
