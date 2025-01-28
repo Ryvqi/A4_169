@@ -14,6 +14,7 @@ import com.example.bisnisproperti.model.Pemilik
 import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.pemilik.DetailPemilikUiState
 import com.example.bisnisproperti.ui.viewmodel.pemilik.DetailPemilikViewModel
+import com.example.bisnisproperti.ui.viewmodel.pemilik.PenyediaVMPemilik
 
 object DestinasiDetailPemilik: DestinasiNavigasi {
     override val route = "detail pemilik"
@@ -28,7 +29,7 @@ fun DetailPemilikView(
     modifier: Modifier = Modifier,
     navigateBack: () -> Unit,
     onEditClick: (Int) -> Unit,
-    viewModel: DetailPemilikViewModel = viewModel()
+    viewModel: DetailPemilikViewModel = viewModel(factory = PenyediaVMPemilik.Factory)
 ) {
     Scaffold(
         topBar = {

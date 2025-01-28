@@ -20,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.pemilik.InsertPemilikUiEvent
 import com.example.bisnisproperti.ui.viewmodel.pemilik.InsertPemilikUiState
+import com.example.bisnisproperti.ui.viewmodel.pemilik.PenyediaVMPemilik
 import com.example.bisnisproperti.ui.viewmodel.pemilik.UpdatePemilikViewModel
 import kotlinx.coroutines.launch
 
@@ -35,7 +36,7 @@ object DestinasiUpdatePemilik: DestinasiNavigasi {
 fun UpdatePemilikView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: UpdatePemilikViewModel = viewModel()
+    viewModel: UpdatePemilikViewModel = viewModel(factory = PenyediaVMPemilik.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
