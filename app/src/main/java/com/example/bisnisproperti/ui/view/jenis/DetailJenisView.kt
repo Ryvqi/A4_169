@@ -14,6 +14,7 @@ import com.example.bisnisproperti.model.JenisProperti
 import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.DetailJenisUiState
 import com.example.bisnisproperti.ui.viewmodel.jenis.DetailJenisViewModel
+import com.example.bisnisproperti.ui.viewmodel.jenis.PenyediaVMJenis
 
 object DestinasiDetailJenis: DestinasiNavigasi{
     override val route = "detail jenis"
@@ -28,7 +29,7 @@ fun DetailJenisView(
     modifier: Modifier = Modifier,
     navigateBack: () -> Unit,
     onEditClick: (Int) -> Unit,
-    viewModel: DetailJenisViewModel = viewModel()
+    viewModel: DetailJenisViewModel = viewModel(factory = PenyediaVMJenis.Factory)
 ) {
     Scaffold(
         topBar = {

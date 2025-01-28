@@ -23,6 +23,7 @@ import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiEvent
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiState
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisViewModel
+import com.example.bisnisproperti.ui.viewmodel.jenis.PenyediaVMJenis
 import kotlinx.coroutines.launch
 
 object DestinasiInsertJenis: DestinasiNavigasi {
@@ -35,7 +36,7 @@ object DestinasiInsertJenis: DestinasiNavigasi {
 fun InsertJenisView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: InsertJenisViewModel = viewModel()
+    viewModel: InsertJenisViewModel = viewModel(factory = PenyediaVMJenis.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(

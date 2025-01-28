@@ -20,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiEvent
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiState
+import com.example.bisnisproperti.ui.viewmodel.jenis.PenyediaVMJenis
 import com.example.bisnisproperti.ui.viewmodel.jenis.UpdateJenisViewModel
 import kotlinx.coroutines.launch
 
@@ -35,7 +36,7 @@ object DestinasiUpdateJenis: DestinasiNavigasi {
 fun UpdateJenisView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: UpdateJenisViewModel = viewModel()
+    viewModel: UpdateJenisViewModel = viewModel(factory = PenyediaVMJenis.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(

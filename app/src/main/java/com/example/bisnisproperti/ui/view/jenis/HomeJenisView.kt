@@ -18,6 +18,7 @@ import com.example.bisnisproperti.model.JenisProperti
 import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.HomeJenisUiState
 import com.example.bisnisproperti.ui.viewmodel.jenis.HomeJenisViewModel
+import com.example.bisnisproperti.ui.viewmodel.jenis.PenyediaVMJenis
 
 object DestinasiHomeJenis: DestinasiNavigasi{
     override val route = "home jenis"
@@ -29,7 +30,7 @@ object DestinasiHomeJenis: DestinasiNavigasi{
 fun HomeJenisView(
     navigateToItemEntry: () -> Unit,
     onEditClick: (Int) -> Unit = {},
-    viewModel: HomeJenisViewModel = viewModel()
+    viewModel: HomeJenisViewModel = viewModel(factory = PenyediaVMJenis.Factory)
 ) {
     Scaffold(
         topBar = {
