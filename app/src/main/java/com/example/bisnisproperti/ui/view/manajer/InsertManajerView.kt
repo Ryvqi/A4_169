@@ -16,6 +16,7 @@ import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerUiEvent
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerUiState
 import com.example.bisnisproperti.ui.viewmodel.manajer.InsertManajerViewModel
+import com.example.bisnisproperti.ui.viewmodel.manajer.PenyediaVMManajer
 import kotlinx.coroutines.launch
 
 object DestinasiInsertManajer: DestinasiNavigasi {
@@ -28,7 +29,7 @@ object DestinasiInsertManajer: DestinasiNavigasi {
 fun InsertManajerView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: InsertManajerViewModel = viewModel()
+    viewModel: InsertManajerViewModel = viewModel(factory = PenyediaVMManajer.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
