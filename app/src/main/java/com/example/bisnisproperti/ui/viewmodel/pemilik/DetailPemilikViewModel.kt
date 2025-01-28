@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.Pemilik
 import com.example.bisnisproperti.repository.PemilikRepository
+import com.example.bisnisproperti.ui.view.pemilik.DestinasiDetailPemilik
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -28,7 +29,7 @@ class DetailPemilikViewModel(
     var pemilikUiState: DetailPemilikUiState by mutableStateOf(DetailPemilikUiState.Loading)
         private set
 
-    private val idPemilik: Int = checkNotNull(savedStateHandle["id_pemilik"])
+    private val idPemilik: Int = checkNotNull(savedStateHandle[DestinasiDetailPemilik.idPemilik])
 
     init {
         getPemilikById()

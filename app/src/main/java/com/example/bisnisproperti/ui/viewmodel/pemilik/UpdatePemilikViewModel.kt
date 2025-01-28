@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.Pemilik
 import com.example.bisnisproperti.repository.PemilikRepository
+import com.example.bisnisproperti.ui.view.pemilik.DestinasiUpdatePemilik
 import kotlinx.coroutines.launch
 
 class UpdatePemilikViewModel(
@@ -17,7 +18,7 @@ class UpdatePemilikViewModel(
     var uiState by mutableStateOf(InsertPemilikUiState())
         private set
 
-    private val idPemilik: Int = checkNotNull(savedStateHandle["id_pemilik"])
+    private val idPemilik: Int = checkNotNull(savedStateHandle[DestinasiUpdatePemilik.idPemilik])
 
     init {
         viewModelScope.launch {
