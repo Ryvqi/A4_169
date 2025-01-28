@@ -16,8 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bisnisproperti.model.Pemilik
+import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.pemilik.HomePemilikUiState
 import com.example.bisnisproperti.ui.viewmodel.pemilik.HomePemilikViewModel
+
+object DestinasiHomePemilik: DestinasiNavigasi {
+    override val route = "home pemilik"
+    override val titleRes = "Home Pemilik"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
