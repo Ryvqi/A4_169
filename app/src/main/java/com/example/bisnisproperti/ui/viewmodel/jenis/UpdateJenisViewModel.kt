@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.JenisProperti
 import com.example.bisnisproperti.repository.JenisPropertiRepository
+import com.example.bisnisproperti.ui.view.jenis.DestinasiUpdateJenis
 import kotlinx.coroutines.launch
 
 class UpdateJenisViewModel(
@@ -18,7 +19,7 @@ class UpdateJenisViewModel(
     var uiState by mutableStateOf(InsertJenisUiState())
         private set
 
-    private val idJenis: Int = checkNotNull(savedStateHandle["id_jenis"])
+    private val idJenis: Int = checkNotNull(savedStateHandle[DestinasiUpdateJenis.idJenis])
 
     init {
         viewModelScope.launch {

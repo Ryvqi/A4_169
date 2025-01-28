@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.JenisProperti
 import com.example.bisnisproperti.repository.JenisPropertiRepository
+import com.example.bisnisproperti.ui.view.jenis.DestinasiDetailJenis
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -28,7 +29,7 @@ class DetailJenisViewModel(
     var jenisPropertiUiState: DetailJenisUiState by mutableStateOf(DetailJenisUiState.Loading)
         private set
 
-    private val idJenis: Int = checkNotNull(savedStateHandle["id_jenis"])
+    private val idJenis: Int = checkNotNull(savedStateHandle[DestinasiDetailJenis.idJenis])
 
     init {
         getJenisPropertiById()
