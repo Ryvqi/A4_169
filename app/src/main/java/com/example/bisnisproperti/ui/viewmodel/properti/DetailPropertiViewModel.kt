@@ -29,7 +29,7 @@ class DetailPropertiViewModel(
     var propertiUiState: DetailPropertiUiState by mutableStateOf(DetailPropertiUiState.Loading)
         private set
 
-    private val idProperti: Int = checkNotNull(savedStateHandle[DestinasiDetailProperti.idProperti])
+    private val idProperti: Int = checkNotNull(savedStateHandle.get<String>(DestinasiDetailProperti.idProperti)?.toInt())
 
     init {
         getPropertiById()
