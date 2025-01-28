@@ -28,8 +28,8 @@ object DestinasiHomeJenis: DestinasiNavigasi{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeJenisView(
-    navigateToItemEntry: () -> Unit,
-    onEditClick: (Int) -> Unit = {},
+    navigateToInsertJenis: () -> Unit,
+    onDetailClick: (Int) -> Unit,
     viewModel: HomeJenisViewModel = viewModel(factory = PenyediaVMJenis.Factory)
 ) {
     Scaffold(
@@ -44,7 +44,7 @@ fun HomeJenisView(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = navigateToItemEntry) {
+            FloatingActionButton(onClick = navigateToInsertJenis) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Jenis Properti")
             }
         }
@@ -53,7 +53,7 @@ fun HomeJenisView(
             homeJenisUiState = viewModel.jenisPropertiUiState,
             retryAction = { viewModel.getAllJenisProperti() },
             modifier = Modifier.padding(innerPadding),
-            onEditClick = onEditClick,
+            onDetailClick = onDetailClick,
             onDeleteClick = { viewModel.deleteJenisProperti(it.idJenis) }
         )
     }
@@ -64,7 +64,7 @@ fun JenisPropertiStatus(
     homeJenisUiState: HomeJenisUiState,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier,
-    onEditClick: (Int) -> Unit,
+    onDetailClick: (Int) -> Unit,
     onDeleteClick: (JenisProperti) -> Unit
 ) {
     when (homeJenisUiState) {
@@ -76,7 +76,7 @@ fun JenisPropertiStatus(
                 JenisPropertiList(
                     jenisPropertiList = homeJenisUiState.jenisProperti,
                     modifier = modifier,
-                    onEditClick = onEditClick,
+                    onDetailClick = onDetailClick,
                     onDeleteClick = onDeleteClick
                 )
             }
@@ -115,7 +115,7 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
 fun JenisPropertiList(
     jenisPropertiList: List<JenisProperti>,
     modifier: Modifier = Modifier,
-    onEditClick: (Int) -> Unit,
+    onDetailClick: (Int) -> Unit,
     onDeleteClick: (JenisProperti) -> Unit
 ) {
     LazyColumn(
@@ -126,7 +126,7 @@ fun JenisPropertiList(
         items(jenisPropertiList) { jenisProperti ->
             JenisPropertiCard(
                 jenisProperti = jenisProperti,
-                onEditClick = { onEditClick(jenisProperti.idJenis) },
+                onDetailClick = { onDetailClick(jenisProperti.idJenis) },
                 onDeleteClick = { onDeleteClick(jenisProperti) }
             )
         }
@@ -136,12 +136,13 @@ fun JenisPropertiList(
 @Composable
 fun JenisPropertiCard(
     jenisProperti: JenisProperti,
-    onEditClick: () -> Unit,
+    onDetailClick: () -> Unit,
     onDeleteClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(8.dp),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Column(
@@ -155,8 +156,8 @@ fun JenisPropertiCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
-                IconButton(onClick = onEditClick) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit Jenis Properti")
+                IconButton(onClick = onDetailClick) {
+                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Detail Jenis Properti")
                 }
                 IconButton(onClick = onDeleteClick) {
                     Icon(imageVector = Icons.Default.Delete, contentDescription = "Hapus Jenis Properti")
