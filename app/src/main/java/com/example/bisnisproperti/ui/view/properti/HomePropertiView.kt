@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +16,43 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.bisnisproperti.model.Properti
 import com.example.bisnisproperti.ui.viewmodel.properti.HomePropertiUiState
+import com.example.bisnisproperti.ui.viewmodel.properti.HomePropertiViewModel
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomePropertiView(
+    navigateToItemEntry: () -> Unit,
+    onDetailClick: (Int) -> Unit = {},
+    onEditClick: (Int) -> Unit = {},
+    viewModel: HomePropertiViewModel = viewModel()
+) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Daftar Properti") },
+                actions = {
+                    IconButton(onClick = { viewModel.getAllProperti() }) {
+                        Icon(Icons.Default.Refresh, contentDescription = "Refresh")
+                    }
+                }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = navigateToItemEntry) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Properti")
+            }
+        }
+    ) { innerPadding ->
+        PropertiStatus(
+            homePropertiUiState = viewModel.propertiUiState,
+            retryAction = { viewModel.getAllProperti() },
+            modifier = Modifier.padding(innerPadding),
+            onDetailClick = onDetailClick,
+            onEditClick = onEditClick,
+            onDeleteClick = { viewModel.deleteProperti(it.idProperti) }
+        )
+    }
+}
 
 @Composable
 fun PropertiStatus(
