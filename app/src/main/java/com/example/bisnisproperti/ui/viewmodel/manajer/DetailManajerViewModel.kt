@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.ManajerProperti
 import com.example.bisnisproperti.repository.ManajerPropertiRepository
+import com.example.bisnisproperti.ui.view.manajer.DestinasiDetailManajer
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -28,7 +29,7 @@ class DetailManajerViewModel(
     var manajerUiState: DetailManajerUiState by mutableStateOf(DetailManajerUiState.Loading)
         private set
 
-    private val idManajer: Int = checkNotNull(savedStateHandle["id_manajer"])
+    private val idManajer: Int = checkNotNull(savedStateHandle[DestinasiDetailManajer.idManajer])
 
     init {
         getManajerById()

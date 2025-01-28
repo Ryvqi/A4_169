@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bisnisproperti.model.ManajerProperti
 import com.example.bisnisproperti.repository.ManajerPropertiRepository
+import com.example.bisnisproperti.ui.view.manajer.DestinasiUpdateManajer
 import kotlinx.coroutines.launch
 
 class UpdateManajerViewModel(
@@ -17,7 +18,7 @@ class UpdateManajerViewModel(
     var uiState by mutableStateOf(InsertManajerUiState())
         private set
 
-    private val idManajer: Int = checkNotNull(savedStateHandle["id_manajer"])
+    private val idManajer: Int = checkNotNull(savedStateHandle[DestinasiUpdateManajer.idManajer])
 
     init {
         viewModelScope.launch {
