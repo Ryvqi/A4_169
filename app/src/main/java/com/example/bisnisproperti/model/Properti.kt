@@ -20,13 +20,13 @@ data class Properti(
     val statusProperti: String,
 
     @SerialName("id_jenis")
-    val idJenis: Int,
+    val idJenis: Int = 0,
 
     @SerialName("id_pemilik")
-    val idPemilik: Int,
+    val idPemilik: Int = 0,
 
     @SerialName("id_manajer")
-    val idManajer: Int
+    val idManajer: Int = 0
 )
 
 @Serializable
