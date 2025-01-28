@@ -13,6 +13,10 @@ class InsertPropertiViewModel(private val propertiRepository: PropertiRepository
     var uiState by mutableStateOf(InsertPropertiUiState())
         private set
 
+    fun updateInsertPropertiState(insertPropertiUiEvent: InsertPropertiUiEvent){
+        uiState = InsertPropertiUiState(insertPropertiUiEvent = insertPropertiUiEvent)
+    }
+
     fun insertProperti() {
         viewModelScope.launch {
             try {
