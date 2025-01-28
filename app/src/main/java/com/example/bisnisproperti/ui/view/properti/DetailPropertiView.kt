@@ -29,6 +29,9 @@ fun DetailPropertiView(
     modifier: Modifier = Modifier,
     navigateBack: () -> Unit,
     onEditClick: (Int) -> Unit,
+    navigateToJenis: () -> Unit,
+    navigateToPemilik: () -> Unit,
+    navigateToManajer: () -> Unit,
     viewModel: DetailPropertiViewModel = viewModel(factory = PenyediaVMProperti.Factory)
 ) {
     Scaffold(
@@ -56,21 +59,57 @@ fun DetailPropertiView(
             }
         }
     ) { innerPadding ->
-        Box(
+        Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            contentAlignment = Alignment.Center
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            when (val state = viewModel.propertiUiState) {
-                is DetailPropertiUiState.Loading -> {
-                    CircularProgressIndicator()
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                when (val state = viewModel.propertiUiState) {
+                    is DetailPropertiUiState.Loading -> {
+                        CircularProgressIndicator()
+                    }
+                    is DetailPropertiUiState.Error -> {
+                        Text(text = "Gagal memuat data properti.", style = MaterialTheme.typography.bodyMedium)
+                    }
+                    is DetailPropertiUiState.Success -> {
+                        PropertiDetailContent(properti = state.properti)
+                    }
                 }
-                is DetailPropertiUiState.Error -> {
-                    Text(text = "Gagal memuat data properti.", style = MaterialTheme.typography.bodyMedium)
+            }
+
+            // Tambahkan tombol navigasi ke halaman lain
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = navigateToJenis,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Lihat Jenis Properti")
                 }
-                is DetailPropertiUiState.Success -> {
-                    PropertiDetailContent(properti = state.properti)
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    onClick = navigateToPemilik,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Lihat Pemilik Properti")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    onClick = navigateToManajer,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Lihat Manajer Properti")
                 }
             }
         }
