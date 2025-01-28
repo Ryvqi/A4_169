@@ -17,10 +17,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiEvent
 import com.example.bisnisproperti.ui.viewmodel.jenis.InsertJenisUiState
 import com.example.bisnisproperti.ui.viewmodel.jenis.UpdateJenisViewModel
 import kotlinx.coroutines.launch
+
+object DestinasiUpdateJenis: DestinasiNavigasi {
+    override val route = "update jenis"
+    override val titleRes = "UpdateJenis"
+    const val idJenis = "idjenis"
+    val routeWithArg = "$route/{$idJenis}"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

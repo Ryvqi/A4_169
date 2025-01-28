@@ -11,8 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bisnisproperti.model.JenisProperti
+import com.example.bisnisproperti.navigasi.DestinasiNavigasi
 import com.example.bisnisproperti.ui.viewmodel.jenis.DetailJenisUiState
 import com.example.bisnisproperti.ui.viewmodel.jenis.DetailJenisViewModel
+
+object DestinasiDetailJenis: DestinasiNavigasi{
+    override val route = "detail jenis"
+    override val titleRes = "Detail Jenis"
+    const val idJenis = "idjenis"
+    val routeWithArg = "$route/{$idJenis}"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
