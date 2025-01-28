@@ -29,7 +29,7 @@ object DestinasiHomeManajer: DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeManajerView(
-    navigateToItemEntry: () -> Unit,
+    navigateToInsertManajer: () -> Unit, // Mengganti navigateToItemEntry
     onDetailClick: (Int) -> Unit = {},
     onEditClick: (Int) -> Unit = {},
     viewModel: HomeManajerViewModel = viewModel(factory = PenyediaVMManajer.Factory)
@@ -46,7 +46,7 @@ fun HomeManajerView(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = navigateToItemEntry) {
+            FloatingActionButton(onClick = navigateToInsertManajer) { // Konsisten dengan rute
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Manajer")
             }
         }
