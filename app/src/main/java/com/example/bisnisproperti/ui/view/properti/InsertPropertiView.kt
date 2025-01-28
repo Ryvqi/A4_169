@@ -107,6 +107,14 @@ fun FormInputProperti(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         OutlinedTextField(
+            value = insertUiEvent.idProperti.toString(),
+            onValueChange = { onValueChange(insertUiEvent.copy(idProperti = it.toIntOrNull() ?: 0)) },
+            label = { Text("ID Properti") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
             value = insertUiEvent.namaProperti,
             onValueChange = { onValueChange(insertUiEvent.copy(namaProperti = it)) },
             label = { Text("Nama Properti") },
